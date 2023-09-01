@@ -1,0 +1,64 @@
+{
+    "name": "graywings/php-docker-template",
+    "description": "PHP project templates",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Taira Terashima",
+            "email": "taira.terashima@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "platform": {
+            "php": "8.2",
+            "ext-ast": "8.2",
+            "ext-ctype": "8.2",
+            "ext-iconv": "8.2",
+            "ext-json": "8.2",
+            "ext-mbstring": "8.2",
+            "ext-simplexml": "8.2",
+            "ext-xml": "8.2"
+        }
+    },
+    "require": {
+    },
+    "require-dev": {
+        "vimeo/psalm": "^5.15",
+        "phan/phan": "^5.4",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Graywings\\PhpDockerTemplate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Graywings\\PhpDockerTemplate\\Tests\\Units\\": "tests/units",
+            "Graywings\\PhpDockerTemplate\\Tests\\Features\\": "tests/features"
+        }
+    },
+    "scripts": {
+        "build": [
+            "@lint",
+            "@test"
+        ],
+        "test": [
+            "@test:units",
+            "@test:features"
+        ],
+        "test:units": "phpunit --testsuite units",
+        "test:features": "phpunit --testsuite features",
+        "lint": [
+            "@lint:phan",
+            "@lint:phpstan",
+            "@lint:psalm"
+        ],
+        "lint:phan": "phan",
+        "lint:phpstan": "phpstan",
+        "lint:psalm": "psalm"
+    }
+}

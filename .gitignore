@@ -1,0 +1,6 @@
+/build/
+/vendor/
+/tools/
+/.psalm/cache/
+!/.psalm/cache/.gitkeep
+/.phpunit.cache

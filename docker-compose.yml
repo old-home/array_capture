@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  php:
+    build: ./docker/php
+    environment:
+      LOCAL_UID: 1000 # TODO: Set your user's id
+      LOCAL_GID: 1000 # TODO: Set your group's id
+    volumes:
+      - .:/app
+  phpdoc:
+    image: phpdoc/phpdoc:3
+    volumes:
+      - .:/data

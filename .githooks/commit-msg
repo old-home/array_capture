@@ -1,0 +1,77 @@
+#!/usr/bin/env zsh
+
+echo -e "\033[37;1m ⚓ Running Git Hooks; commit-msg\033[0m"
+echo -e ""
+
+MSG="$(cat "$1")"
+readonly MSG
+
+code=0
+
+echo -en " - Prefix exists?: "
+
+CORRECT_PREFIXES=("feat" "fix" "docs" "style" "refactor" "test" "chore")
+
+correct_prefixes=()
+
+for ((i = 1; i <= ${#CORRECT_PREFIXES[@]}; i++)); do
+  correct_prefixes[i]="${CORRECT_PREFIXES[i]}: "
+done
+
+prefixes="$(
+  IFS="|"
+  echo "${correct_prefixes[*]}"
+)"
+
+if ! echo "$MSG" | grep -qE "$prefixes"; then
+  echo -e "\033[31;22m [NG]"
+  echo -e ""
+  echo -e "==================================================================="
+  echo -e "Prefix don't exist."
+  echo -e ""
+  echo -e "Please use one of the following prefixes:"
+  echo -e ""
+  echo -e "feat:     A new feature"
+  echo -e "fix:      A bug fix"
+  echo -e "docs:     Documentation only changes"
+  echo -e "style:    Changes that do not affect the meaning of the code"
+  echo -e "refactor: A code change that neither fixes a bug nor adds a feature"
+  echo -e "test:     Adding missing tests or correcting existing tests"
+  echo -e "chore:    Changes to the build process or auxiliary tools"
+  echo -e "===================================================================\033[0m"
+  code=1
+else
+  echo -e "\033[32;22m [OK]\033[0m"
+fi
+
+echo -e ""
+echo -e ""
+echo -en " - Issue number exists?: "
+
+readonly ISSUE_NUMBER="#[0-9]+"
+
+if ! echo "$MSG" | grep -qE "$ISSUE_NUMBER"; then
+  echo -e "\033[31;22m [NG]"
+  echo -e ""
+  echo -e "==================================================================="
+  echo -e "Issue number don't exist."
+  echo -e ""
+  echo -e "Please add issue number. like a: "
+  echo -e ""
+  echo -e "#1234"
+  echo -e "===================================================================\033[0m"
+  code=1
+else
+  echo -e "\033[32;22m [OK]\033[0m"
+fi
+
+echo -e ""
+echo -e ""
+
+if [ ${code} -eq 0 ]; then
+  echo -e "\033[32;22m [✨ALL PASS]\033[0m"
+else
+  echo -e "\033[31;22m [Git hooks: commit-msg: NG]\033[0m"
+fi
+
+exit ${code}
