@@ -6,6 +6,7 @@ services:
     environment:
       LOCAL_UID: 1000 # TODO: Set your user's id
       LOCAL_GID: 1000 # TODO: Set your group's id
+      XDEBUG_MODE: coverage
     volumes:
       - .:/app
   phpdoc:

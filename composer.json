@@ -1,7 +1,7 @@
 {
-    "name": "graywings/php-docker-template",
-    "description": "PHP project templates",
-    "type": "project",
+    "name": "graywings/array_capture",
+    "description": "ArrayCapture is a library that allows you to capture the array-like and access it as an object.",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -23,6 +23,7 @@
         }
     },
     "require": {
+        "graywings/exceptions": "^0.1.1"
     },
     "require-dev": {
         "vimeo/psalm": "^5.15",
@@ -32,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Graywings\\PhpDockerTemplate\\": "src/"
+            "Graywings\\ArrayCapture\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Graywings\\PhpDockerTemplate\\Tests\\Units\\": "tests/units",
-            "Graywings\\PhpDockerTemplate\\Tests\\Features\\": "tests/features"
+            "Graywings\\ArrayCapture\\Tests\\Units\\": "tests/units",
+            "Graywings\\ArrayCapture\\Tests\\Features\\": "tests/features"
         }
     },
     "scripts": {
@@ -52,6 +53,7 @@
         ],
         "test:units": "phpunit --testsuite units",
         "test:features": "phpunit --testsuite features",
+        "test:coverage": "phpunit --testsuite units --coverage-html=build/coverage",
         "lint": [
             "@lint:phan",
             "@lint:phpstan",

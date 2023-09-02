@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a7fed218ff061d56f2b1928408fef3d",
-    "packages": [],
+    "content-hash": "746cd0b81f36a4ee39c7b4048eced4bf",
+    "packages": [
+        {
+            "name": "graywings/exceptions",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/old-home/exceptions.git",
+                "reference": "e35a2a2ad6520e720ee95843636cb56e3e7d1fba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/old-home/exceptions/zipball/e35a2a2ad6520e720ee95843636cb56e3e7d1fba",
+                "reference": "e35a2a2ad6520e720ee95843636cb56e3e7d1fba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ast": "*",
+                "ext-ctype": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "ext-xml": "*",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "phan/phan": "^5.4",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.3",
+                "vimeo/psalm": "^5.15"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Graywings\\Exceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taira Terashima",
+                    "email": "taira.terashima@gmail.com"
+                }
+            ],
+            "description": "set_error_handler() wrapper",
+            "support": {
+                "issues": "https://github.com/old-home/exceptions/issues",
+                "source": "https://github.com/old-home/exceptions/tree/0.1.1"
+            },
+            "time": "2023-09-01T06:29:18+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "amphp/amp",
